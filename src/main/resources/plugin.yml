@@ -1,0 +1,20 @@
+# Plugin recompiled by NaulbiMIX | Sponsored by FlatiCommunity (https://t.me/flaticommunity)
+# Specially publication for https://teletype.in/@naulbimix/rumine
+#
+# Плагин разработан командой кодеров UniversalStudio.
+# Если Вы обнаружите какой-либо баг, незамедлительно сообщите нам.
+# [В]конакте: vk.com/universalstudio
+# Сайт: u-studio.su
+
+name: UnversalMine
+
+author: UnversalStudio Inc
+version: 1.0
+
+main: ru.universalstudio.universalmines.Main
+depend: [WorldEdit, Vault, PlaceholderAPI]
+
+commands:
+    umine:
+        description: Main executions sub commands.
+        aliases: [um]

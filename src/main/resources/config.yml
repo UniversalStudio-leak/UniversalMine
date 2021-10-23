@@ -1,0 +1,107 @@
+# Plugin recompiled by NaulbiMIX | Sponsored by FlatiCommunity (https://t.me/flaticommunity)
+# Specially publication for https://teletype.in/@naulbimix/rumine
+#
+# Студия UniversalStudio - vk.com/universalstudio
+# Права:
+# umine.command.create - Доступ к команде /umine create
+# umine.command.remove - Доступ к команде /umine remove
+# umine.command.list - Доступ к команде /umine list
+# umine.command.salary - Доступ к команде /umine salary
+# umine.command.reset - Доступ к команде /umine resetall
+# umine.command.setsalary - Доступ к команде /umine setsalary
+# umine.command.addsalary - Доступ к команде /umine addsalary
+# umine.command.takesalary - Доступ к команде /umine takesalary
+setblock: cobblestone # Какой блок будет устанавливаться после ломание руды
+
+resoures:
+    drop: false # Будут ли дропаться ресурсы после ломания блоки
+    straight: false # Будет ли перемещены ресурсы сразу в инвентарь после ломания блока
+exp: false # Будет ли дропаться опыт после ломания блока
+
+block-place: # umines.placeblocks - Возможность ставить блоки в авто-шахте
+    enable: true
+    message: 'В авто-шахте нельзя ставить блоки;title:  &6&lШахта %nl% Здесь нельзя ставить блоки'
+
+block-break: # umines.breakblocks - Возможность ломать блоки в авто-шахте
+    enable: true
+    message: 'Вы не можете ломать другие блоки в авто-шахте;title:  &6&lШахта %nl% Здесь нельзя ломать блоки'
+
+checks: # umines.checks - Не проверять игрока
+    gamemode:
+        enable: true
+        modes: [creative,spectator]
+        setmode: survival
+        message: 'Здесь нельзя находится с креативом;title:  &6&lШахта %nl% Креатив в авто-шахте запрещён.'
+    fly:
+        enable: true
+        message: 'Здесь нельзя находится с флаем;title:  &6&lШахта %nl% Флай в авто-шахте запрещён.'
+messages:
+    prefix: '&6Шахта &f> '
+    commandmanager:
+        title_help: 'Список команд:'
+        command_not_found: 'Неизвестная команда.'
+        error: 'Произошла ошибка при выполнении данной команды.'
+        no_permission: 'У вас нет прав.;title:  &6&lШахта %nl% У вас нет прав.'
+    create:
+        usage: '&c/umine create <название> &f- Создать авто-шахту'
+        no_selection: 'Пожалуйста выделите территорию для создание авто-шахты'
+        already: 'Данная авто-шахта уже существует, придумайте другое название.'
+        complete: 'Авто-шахта сохранена.;title:  &6&lШахта %nl% Авто-шахта сохранена.'
+    remove:
+        usage: '&c/umine remove <название> &f- Удалить авто-шахту'
+        not-found: 'Данной авто-шахты не существует.'
+        complete: 'Авто-шахта успешно удалена.'
+    reset:
+        usage: '&c/umine reset &f- Перезагрузить все блоки в авто-шахте'
+        complete: 'Блоки перезагружены.'
+    list:
+        usage: '&c/umine list &f- Показать список шахт'
+        empty: 'Список шахт пуст.'
+        title: 'Список шахт:'
+        format: '&c%step%&f. &a%name% &f- %stats%'
+        stats: '(&e%min%&f) -> (&e%max%&f), &a%world%'
+    setsalary:
+        usage: '&c/umine setsalary <игрок> <зарплата> &f- Установить зарплату игроку'
+        player-notfound: 'Игрок не найден.'
+        double-exception: 'Неверное число.'
+        complete: 'Игроку &c%player% &fустановлена зарплата: &c%salary%$'
+    addsalary:
+        usage: '&c/umine addsalary <игрок> <зарплата> &f- Добавить зарплату игроку'
+        player-notfound: 'Игрок не найден.'
+        double-exception: 'Неверное число.'
+        complete: 'Игроку &c%player% &fдобавлена зарплата, его зарплата составляет: &c%salary%$'
+    takesalary:
+        usage: '&c/umine takesalary <игрок> <зарплата> &f- Убавить зарплату игроку'
+        player-notfound: 'Игрок не найден.'
+        double-exception: 'Неверное число.'
+        complete: 'Игроку &c%player% &fубавлена зарплата, его зарплата составляет: &c%salary%$'
+    salary:
+        usage: '&c/umine salary &f- Получить зарплату'
+        zero: 'Чтобы получить зарплату, вы должны ломать руды.;title:  &6&lШахта %nl% Чтобы получить зарплату, вы должны ломать руды.'
+        complete: 'title:  &6&lШахта %nl% Вы получили зарплату в размере &c%salary%$;actionbar:Вы получили зарплату в размере &c%salary%$'
+    block:
+        complete: 'actionbar:Вы получили &c%salary%$ &fза ломание блока: &c%block%'
+ores:
+    iron_ore: # Тип блока
+        money: 100 # Зарплата за 1 блок
+        update: 10 # Обновление блока (в секундах)
+        prefix: '&6Железная руда' # Префикс для отображение какой блок вы сломали (при желании можно убрать)
+    coal_ore:
+        money: 250
+        update: 10
+        prefix: '&7Угольная руда'
+    diamond_ore:
+        money: 1000
+        update: 10
+    gold_ore:
+        money: 400
+        update: 10
+        prefix: '&eЗолотая руда'
+    emerald_ore:
+        money: 2000
+        update: 10
+    quartz_ore:
+        money: 500
+        update: 10
+        prefix: '&fКварцовая руда'
+    
